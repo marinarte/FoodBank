@@ -2,6 +2,7 @@ import requests
 
 Question1 = int(input("Do you want  1) To Get Help or  2) To Give Help? Enter 1 OR 2 "))
 
+#This function enables the user to request contact and location details of a nearby food bank
 def get_help():
     post_code = input("Insert your Postcode: ")
     url = "https://www.givefood.org.uk/api/1/foodbanks/search/?address={}".format(post_code)
@@ -11,12 +12,13 @@ def get_help():
         print("-------{}------".format(name['name']))
         print("Food Bank Name:", name["name"])
         print("Address: ", name["address"])
-        print("Distance in Meters: ", name["distance_m"])
+        print("Distance in Meters: ", name["distance_m"]) #print("Distance in Kilometers: ", int(name["distance_m"]/100)
         print("Phone Number:", name["phone"])
         print("District:", name["district"])
         print("Email: ", name["email"])
         print("Website: ", name["url"])
 
+#The following functions enables the user to donate an item to a nearby foodbank.
 def give_help():
     post_code = input("Insert your Postcode:")
     url = "https://www.givefood.org.uk/api/1/foodbanks/search/?address={}".format(post_code)
